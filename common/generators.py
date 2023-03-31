@@ -195,7 +195,7 @@ class UnchunkedGenerator_Seq:
         assert poses_3d is None or len(poses_3d) == len(poses_2d)
         assert cameras is None or len(cameras) == len(poses_2d)
 
-        self.augment = augment
+        self.augment = False
         self.kps_left = kps_left
         self.kps_right = kps_right
         self.joints_left = joints_left

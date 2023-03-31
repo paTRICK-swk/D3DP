@@ -1,6 +1,6 @@
 # Diffusion-Based 3D Human Pose Estimation with Multi-Hypothesis Aggregation
 
-The PyTorch implementation for "Diffusion-Based 3D Human Pose Estimation with Multi-Hypothesis Aggregation" .
+The PyTorch implementation for ["Diffusion-Based 3D Human Pose Estimation with Multi-Hypothesis Aggregation"](https://arxiv.org/pdf/2303.11579.pdf) .
 <p align="center"><img src="fig/overview.jpg", width="600" alt="" /></p>
 <p align="center"><img src="fig/demo.gif", width="600"  alt="" /></p>
 
@@ -9,15 +9,15 @@ The PyTorch implementation for "Diffusion-Based 3D Human Pose Estimation with Mu
 
 Make sure you have the following dependencies installed (python):
 
-* PyTorch >= 0.4.0
-* Matplotlib=3.1.0
+* pytorch >= 0.4.0
+* matplotlib=3.1.0
 * einops
 * timm
 * tensorboard
 
 You should download [MATLAB](https://www.mathworks.com/products/matlab-online.html) if you want to evaluate our model on MPI-INF-3DHP dataset.
 
-## Dataset
+## Datasets
 
 Our model is evaluated on [Human3.6M](http://vision.imar.ro/human3.6m) and [MPI-INF-3DHP](https://vcai.mpi-inf.mpg.de/3dhp-dataset/) datasets. 
 
@@ -36,10 +36,10 @@ You can download our pre-trained models, which are evaluated on Human3.6M (from 
 
 To evaluate our D3DP with JPMA using the 2D keypoints obtained by CPN as inputs, please run:
 ```bash
-python main.py -k cpn_ft_h36m_dbb -c checkpoint -gpu 0 --nolog --evaluate h36m_best_epoch.bin -num_proposals 10 -sampling_timesteps 5 -b 4
+python main.py -k cpn_ft_h36m_dbb -c checkpoint -gpu 0 --nolog --evaluate h36m_best_epoch.bin -num_proposals 5 -sampling_timesteps 5 -b 4
 ```
 
-You can balance efficiency and accuracy by adjusting `-num_proposals` and `-sampling_timesteps`.
+You can balance efficiency and accuracy by adjusting `-num_proposals` (number of hypotheses) and `-sampling_timesteps` (number of iterations).
 
 For visualization, please run:
 ```bash
@@ -50,7 +50,7 @@ The results will be saved in `./plot/h36m`.
 ### MPI-INF-3DHP
 To evaluate our D3DP with JPMA using the ground truth 2D poses as inputs, please run:
 ```bash
-python main_3dhp.py -c checkpoint -gpu 0 --nolog --evaluate 3dhp_best_epoch.bin -num_proposals 10 -sampling_timesteps 5 -b 4
+python main_3dhp.py -c checkpoint -gpu 0 --nolog --evaluate 3dhp_best_epoch.bin -num_proposals 5 -sampling_timesteps 5 -b 4
 ```
 After that, the predicted 3D poses under P-Best, P-Agg, J-Best, J-Agg settings are saved as four files (`.mat`) in `./checkpoint`. To get the MPJPE, AUC, PCK metrics, you can evaluate the predictions by running a Matlab script `./3dhp_test/test_util/mpii_test_predictions_ori_py.m` (you can change 'aggregation_mode' in line 29 to get results under different settings). Then, the evaluation results are saved in `./3dhp_test/test_util/mpii_3dhp_evaluation_sequencewise_ori_{setting name}_t{iteration index}.csv`. You can manually average the three metrics in these files over six sequences to get the final results. An example is shown in `./3dhp_test/test_util/H20_K10/mpii_3dhp_evaluation_sequencewise_ori_J_Best_t10.csv`.
 
@@ -88,6 +88,14 @@ After that, you can evaluate our models on in-the-wild videos using [video-to-po
 
 ## Citation
 If you find this repo useful, please consider citing our paper:
+```
+@article{shan2023diffusion,
+  title={Diffusion-Based 3D Human Pose Estimation with Multi-Hypothesis Aggregation},
+  author={Shan, Wenkang and Liu, Zhenhua and Zhang, Xinfeng and Wang, Zhao and Han, Kai and Wang, Shanshe and Ma, Siwei and Gao, Wen},
+  journal={arXiv preprint arXiv:2303.11579},
+  year={2023}
+}
+```
 
 
 ## Acknowledgement
