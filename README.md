@@ -1,4 +1,4 @@
-# Diffusion-Based 3D Human Pose Estimation with Multi-Hypothesis Aggregation
+# Diffusion-Based 3D Human Pose Estimation with Multi-Hypothesis Aggregation [ICCV2023]
 
 The PyTorch implementation for ["Diffusion-Based 3D Human Pose Estimation with Multi-Hypothesis Aggregation"](https://arxiv.org/pdf/2303.11579.pdf) .
 <p align="center"><img src="fig/overview.jpg", width="600" alt="" /></p>
