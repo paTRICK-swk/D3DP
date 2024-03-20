@@ -89,11 +89,13 @@ After that, you can evaluate our models on in-the-wild videos using [video-to-po
 ## Citation
 If you find this repo useful, please consider citing our paper:
 ```
-@article{shan2023diffusion,
-  title={Diffusion-Based 3D Human Pose Estimation with Multi-Hypothesis Aggregation},
-  author={Shan, Wenkang and Liu, Zhenhua and Zhang, Xinfeng and Wang, Zhao and Han, Kai and Wang, Shanshe and Ma, Siwei and Gao, Wen},
-  journal={arXiv preprint arXiv:2303.11579},
-  year={2023}
+@InProceedings{Shan_2023_ICCV,
+    author    = {Shan, Wenkang and Liu, Zhenhua and Zhang, Xinfeng and Wang, Zhao and Han, Kai and Wang, Shanshe and Ma, Siwei and Gao, Wen},
+    title     = {Diffusion-Based 3D Human Pose Estimation with Multi-Hypothesis Aggregation},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2023},
+    pages     = {14761-14771}
 }
 ```
 
